@@ -14,6 +14,24 @@
     <h1>
         Hello!
     </h1>
+    <p>
+        latitude: <span id="latitude"></span>&deg;<br />
+        longitude: <span id="longitude"></span>&deg;
+    </p>
+    <script>
+        if ('geolocation' in navigator) {
+            console.log('geolocation is available');
+            navigator.geolocation.getCurrentPosition(position => {
+                const lat = position.coords.latitude;
+                document.getElementById('latitude').textContent = lat;
+                const long = position.coords.longitude;
+                document.getElementById('longitude').textContent = long;
+                console.log(position);
+            });
+        } else {
+            console.log('geolocation not available')
+        }
+    </script>
 </body>
 
 </html>
